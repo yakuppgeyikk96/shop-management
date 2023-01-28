@@ -11,7 +11,7 @@ export default function Home() {
       </Head>
       <main>
         <div className="w-full flex justify-center items-center">
-            <p className="font-semibold text-red-400 text-3xl">
+            <p className="font-semibold text-primaryColor text-3xl">
                 Hello from Vercel!
             </p>
         </div>

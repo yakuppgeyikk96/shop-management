@@ -1,9 +1,23 @@
-import {FC, PropsWithChildren, ReactElement} from "react";
+import {FC, PropsWithChildren, ReactElement, useCallback, useEffect, useState} from "react";
 import Link from "next/link";
 import {navbarItems} from "@/constants/routes";
 import {NavbarItem} from "@/constants/types";
+import {NextRouter, useRouter} from "next/router";
+import findNavIndex from "@/utils/findNavIndex";
 
 const NavListDesktop: FC<PropsWithChildren> = (): ReactElement => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const router: NextRouter = useRouter();
+
+  const findCurrentNavIndex = useCallback(() => {
+    const currentNavIndex = findNavIndex(navbarItems, router);
+    setActiveIndex(currentNavIndex);
+  }, [router])
+
+  useEffect(() => {
+    findCurrentNavIndex();
+  }, [findCurrentNavIndex, router.pathname])
+
   return (
     <ul className="flex gap-8 flex-1 justify-center items-center">
       {
@@ -11,7 +25,7 @@ const NavListDesktop: FC<PropsWithChildren> = (): ReactElement => {
           <li key={item.index}
           >
             <Link href={item.link}
-              className="hover:text-red-400 font-semibold"
+              className={`hover:text-primaryColor font-semibold ${item.index === activeIndex ? 'text-primaryColor': ''}`}
             >
               {item.title}
             </Link>
