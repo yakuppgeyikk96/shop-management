@@ -16,23 +16,23 @@ const SidebarDesktop: FC<PropsWithChildren> = (): ReactElement => {
   const [activeIndex, setActiveIndex] = useState(1);
   const router: NextRouter = useRouter();
 
-  const selectSidebarItems = useCallback(() => {
-    setSidebarItems(() => findSidebarItems(router.pathname));
-  }, [router.pathname]);
+  const selectSidebarItems = () => {
+    setSidebarItems(() => findSidebarItems(router.asPath));
+  }
 
-  const findCurrentNavIndex = useCallback(() => {
-    const currentNavIndex = findSidebarNavIndex(router.pathname, sidebarItems);
+  const findCurrentNavIndex = () => {
+    const currentNavIndex = findSidebarNavIndex(router.asPath, sidebarItems);
     setActiveIndex(currentNavIndex);
-  }, [router.pathname, sidebarItems])
+  }
 
   useEffect(() => {
     selectSidebarItems();
     findCurrentNavIndex();
-  }, [findCurrentNavIndex, router.pathname, selectSidebarItems])
+  }, [router.asPath])
 
   useEffect(() => {
     findCurrentNavIndex();
-  }, [findCurrentNavIndex, sidebarItems])
+  }, [sidebarItems])
 
   return (
     <ul className="px-8 py-4 flex flex-col gap-4">

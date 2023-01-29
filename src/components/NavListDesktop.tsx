@@ -9,14 +9,14 @@ const NavListDesktop: FC<PropsWithChildren> = (): ReactElement => {
   const [activeIndex, setActiveIndex] = useState(0);
   const router: NextRouter = useRouter();
 
-  const findCurrentNavIndex = useCallback(() => {
+  const findCurrentNavIndex = () => {
     const currentNavIndex = findNavIndex(navbarItems, router);
     setActiveIndex(currentNavIndex);
-  }, [router])
+  }
 
   useEffect(() => {
     findCurrentNavIndex();
-  }, [findCurrentNavIndex, router.pathname])
+  }, [router.asPath])
 
   return (
     <ul className="flex gap-8 flex-1 justify-center items-center">
