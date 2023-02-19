@@ -35,7 +35,7 @@ const SidebarDesktop: FC<PropsWithChildren> = (): ReactElement => {
   }, [sidebarItems])
 
   return (
-    <ul className="px-8 py-4 flex flex-col gap-4">
+    <ul className="px-4 py-4 flex flex-col gap-4">
       {
         sidebarItems.map((navItem) => (
           <li key={navItem.index}

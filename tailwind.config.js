@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         "primaryColor": "#f87171",
         "secondaryColor": "#fef2f2"
+      },
+      height: {
+        "sidebarHeight": "calc(100vh - 4rem)"
       }
     },
   },
