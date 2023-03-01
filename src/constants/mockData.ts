@@ -1,3 +1,7 @@
+import Category from "@/models/category.model";
+import Price from "@/models/currency.model";
+import Currency from "@/models/currency.model";
+
 export interface Product {
   id: number;
   title: string;
@@ -57,4 +61,17 @@ export const mockProducts: Product[] = [
     image: 'food4',
     ingredients: []
   },
+];
+
+
+export const mockCategories: Category[] = [
+  { id: 0, title: "Main Meal" },
+  { id: 1, title: "Dessert" },
+  { id: 2, title: "Starter" },
+  { id: 3, title: "Breakfast" },
+];
+
+export const mockCurrencies: Currency[] = [
+  { id: 1, currency: "TRY", code: 1 },
+  { id: 1, currency: "USD", code: 2 },
 ];
